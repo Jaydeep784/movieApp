@@ -7,7 +7,9 @@ function App() {
   const [showInfo, setShowInfo] = useState(false);
 
   const getMovieData = async (e) => {
+    if(movie == null) return alert("Please enter movie name");
     e.preventDefault();
+
     let response = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=c76f332a&t=${movie}`).then((res) => res.json()).catch((e) => console.log(e));
     setMovieInfo(response);
     setShowInfo(true);
